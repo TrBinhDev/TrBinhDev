@@ -81,6 +81,52 @@ Across my projects I've worked with:
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=TrBinhDev&bg_color=0f0f1a&color=a8a8c0&title_color=6366f1&line=6366f1&point=818cf8&area=true&hide_border=true&custom_title=Contribution%20Activity" />
 
+---
+
+### `05` — How I handle concurrency
+
+A booking flow that survives double-clicks, retries, and two users racing for
+the last seat:
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant B as Booking Service
+    participant R as Redis
+    participant E as Event Service
+    participant K as Kafka
+
+    C->>B: POST /bookings + Idempotency-Key
+    B->>R: check key
+    alt key exists
+        R-->>B: cached response
+        B-->>C: 200 (original result)
+    else new request
+        B->>E: reserve slots (internal)
+        E->>E: UPDATE ... WHERE available >= n
+        alt rows affected = 0
+            E-->>B: sold out
+            B-->>C: 409 Conflict
+        else reserved
+            E-->>B: ok
+            B->>B: TX: booking + tickets + log
+            B->>R: cache response (TTL 60s)
+            B->>K: publish booking.confirmed
+            B-->>C: 201 Created
+        end
+    end
+```
+
+**Idempotency** — the key is cached before the response is returned, so a retry
+replays the original result instead of creating a second booking.
+**No manual locks** — the conditional `UPDATE` relies on PostgreSQL row-level
+locking; a concurrent transaction waits, then re-evaluates `available >= n`
+against the committed value. Zero rows affected means sold out.
+**Atomicity** — booking, tickets and status log are written in one transaction,
+so a failure anywhere leaves nothing half-written.
+**Async by default** — email and real-time push happen off the Kafka event, not
+in the request path.
+
 <p align="center">
   <sub><code>ttb.dev</code> · Hanoi, Vietnam</sub>
 </p>
