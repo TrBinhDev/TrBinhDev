@@ -83,49 +83,31 @@ Across my projects I've worked with:
 
 ---
 
-### `05` — How I handle concurrency
-
-A booking flow that survives double-clicks, retries, and two users racing for
-the last seat:
+### `05` — How I build
 
 ```mermaid
-sequenceDiagram
-    participant C as Client
-    participant B as Booking Service
-    participant R as Redis
-    participant E as Event Service
-    participant K as Kafka
+flowchart LR
+    Client([Client]) --> GW[API Gateway]
+    GW --> U[User<br/>Service]
+    GW --> E[Event<br/>Service]
+    GW --> B[Booking<br/>Service]
+    U -.-> DB1[(db_users)]
+    E -.-> DB2[(db_events)]
+    B -.-> DB3[(db_bookings)]
+    B --> K{{Apache Kafka}}
+    E --> K
+    K --> N[Notification<br/>Service]
+    N --> Mail([Email])
+    N --> WS([Socket.io])
 
-    C->>B: POST /bookings + Idempotency-Key
-    B->>R: check key
-    alt key exists
-        R-->>B: cached response
-        B-->>C: 200 (original result)
-    else new request
-        B->>E: reserve slots (internal)
-        E->>E: UPDATE ... WHERE available >= n
-        alt rows affected = 0
-            E-->>B: sold out
-            B-->>C: 409 Conflict
-        else reserved
-            E-->>B: ok
-            B->>B: TX: booking + tickets + log
-            B->>R: cache response (TTL 60s)
-            B->>K: publish booking.confirmed
-            B-->>C: 201 Created
-        end
-    end
+    style GW fill:#6366f1,stroke:#818cf8,color:#fff
+    style K fill:#17172a,stroke:#6366f1,color:#818cf8
+    style N fill:#131320,stroke:#818cf8,color:#eeeeff
 ```
 
-**Idempotency** — the key is cached before the response is returned, so a retry
-replays the original result instead of creating a second booking.
-**No manual locks** — the conditional `UPDATE` relies on PostgreSQL row-level
-locking; a concurrent transaction waits, then re-evaluates `available >= n`
-against the committed value. Zero rows affected means sold out.
-**Atomicity** — booking, tickets and status log are written in one transaction,
-so a failure anywhere leaves nothing half-written.
-**Async by default** — email and real-time push happen off the Kafka event, not
-in the request path.
+Database-per-service, a single gateway at the edge, and Kafka carrying
+everything that shouldn't block a response — email, real-time push, and
+cross-service rollbacks all happen off the request path.
 
 <p align="center">
   <sub><code>ttb.dev</code> · Hanoi, Vietnam</sub>
