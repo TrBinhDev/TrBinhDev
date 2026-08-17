@@ -16,7 +16,7 @@
 
 | | |
 |:--|:--|
-| **Role** | Backend Engineer — open to internship |
+| **Role** | Backend Engineer |
 | **Education** | B.Eng. Information Technology, Hanoi University of Architecture · 2022–2027 |
 | **Focus** | Distributed systems, event-driven architecture, API design |
 | **Based in** | Hanoi, Vietnam · open to remote |
