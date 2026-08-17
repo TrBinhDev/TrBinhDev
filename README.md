@@ -74,40 +74,7 @@ Across my projects I've worked with:
 
 ### `04` — Activity
 
-<div align="center">
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=TrBinhDev&show_icons=true&hide_border=true&bg_color=0f0f1a&title_color=6366f1&text_color=a8a8c0&icon_color=818cf8&rank_icon=github&include_all_commits=true&count_private=true" />
-  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TrBinhDev&layout=compact&hide_border=true&bg_color=0f0f1a&title_color=6366f1&text_color=a8a8c0&langs_count=6&hide=html,css,scss" />
-</div>
-
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=TrBinhDev&bg_color=0f0f1a&color=a8a8c0&title_color=6366f1&line=6366f1&point=818cf8&area=true&hide_border=true&custom_title=Contribution%20Activity" />
-
----
-
-### `05` — How I build
-
-```mermaid
-flowchart LR
-    Client([Client]) --> GW[API Gateway]
-    GW --> U[User<br/>Service]
-    GW --> E[Event<br/>Service]
-    GW --> B[Booking<br/>Service]
-    U -.-> DB1[(db_users)]
-    E -.-> DB2[(db_events)]
-    B -.-> DB3[(db_bookings)]
-    B --> K{{Apache Kafka}}
-    E --> K
-    K --> N[Notification<br/>Service]
-    N --> Mail([Email])
-    N --> WS([Socket.io])
-
-    style GW fill:#6366f1,stroke:#818cf8,color:#fff
-    style K fill:#17172a,stroke:#6366f1,color:#818cf8
-    style N fill:#131320,stroke:#818cf8,color:#eeeeff
-```
-
-Database-per-service, a single gateway at the edge, and Kafka carrying
-everything that shouldn't block a response — email, real-time push, and
-cross-service rollbacks all happen off the request path.
 
 <p align="center">
   <sub><code>ttb.dev</code> · Hanoi, Vietnam</sub>
