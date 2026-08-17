@@ -25,22 +25,18 @@
 
 ### `02` — About
 
-Most backend bugs aren't syntax errors. They're two requests arriving at the
-same millisecond, a retry that charges a customer twice, a service that keeps
-answering long after the one it depends on went down. Those are the problems
-I find interesting, and they're what I've spent the last year learning to solve.
+Backend engineer working in Node.js and TypeScript, focused on building
+systems that stay correct under concurrent load.
 
-I've built three systems end to end — an event ticketing platform on
-microservices, a staff management system for my university, and a restaurant
-POS with a QR-based storefront. None of them were tutorials. Every design
-decision in them was one I had to make, defend, and occasionally undo: why a
-Redis-cached idempotency key beats a unique constraint here, why an atomic
-`UPDATE ... WHERE available >= n` removes the need for a manual lock there,
-why splitting a database per service costs you joins but buys you deploys.
+Across my projects I've worked with:
 
-I'd rather ship one service I can reason about at 2 a.m. than five I can't.
-Right now I'm looking for a team where code review is a conversation and
-"it works on my machine" isn't the end of the discussion.
+- **Microservices** — service boundaries, database-per-service, API gateway
+- **Idempotency** — duplicate request handling on retries and double-submits
+- **Locking** — optimistic and pessimistic locking depending on write contention
+- **Transactions** — atomic multi-step writes, event-driven compensation across services
+- **Race conditions** — overselling prevention via atomic conditional updates
+- **Kafka** — async workflows, decoupling services from blocking responses
+- **Docker & CI/CD** — containerized services, automated build and image publishing
 
 ---
 
@@ -51,7 +47,7 @@ Right now I'm looking for a team where code review is a conversation and
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white&labelColor=0f0f1a)
 ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white&labelColor=0f0f1a)
 ![Express](https://img.shields.io/badge/Express-eeeeff?style=flat-square&logo=express&logoColor=eeeeff&labelColor=0f0f1a)
-![NestJS](https://img.shields.io/badge/REST_APIs-818cf8?style=flat-square&logo=fastapi&logoColor=818cf8&labelColor=0f0f1a)
+![REST APIs](https://img.shields.io/badge/REST_APIs-818cf8?style=flat-square&logo=fastapi&logoColor=818cf8&labelColor=0f0f1a)
 
 **Data & Messaging**
 
@@ -79,11 +75,11 @@ Right now I'm looking for a team where code review is a conversation and
 ### `04` — Activity
 
 <div align="center">
-  <img height="150" src="https://github-readme-stats.vercel.app/api?username=TrBinhDev&show_icons=true&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=a8a8c0&icon_color=818cf8&rank_icon=github&include_all_commits=true&count_private=true" />
-  <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TrBinhDev&layout=compact&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=a8a8c0&langs_count=6&hide=html,css,scss" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api?username=TrBinhDev&show_icons=true&hide_border=true&bg_color=0f0f1a&title_color=6366f1&text_color=a8a8c0&icon_color=818cf8&rank_icon=github&include_all_commits=true&count_private=true" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TrBinhDev&layout=compact&hide_border=true&bg_color=0f0f1a&title_color=6366f1&text_color=a8a8c0&langs_count=6&hide=html,css,scss" />
 </div>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=TrBinhDev&bg_color=00000000&color=a8a8c0&title_color=6366f1&line=6366f1&point=818cf8&area=true&area_color=6366f1&hide_border=true&custom_title=Contribution%20Activity" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=TrBinhDev&bg_color=0f0f1a&color=a8a8c0&title_color=6366f1&line=6366f1&point=818cf8&area=true&hide_border=true&custom_title=Contribution%20Activity" />
 
 <p align="center">
   <sub><code>ttb.dev</code> · Hanoi, Vietnam</sub>
