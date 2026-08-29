@@ -71,13 +71,3 @@ Across my projects I've worked with:
 ![Next.js](https://img.shields.io/badge/Next.js-eeeeff?style=flat-square&logo=nextdotjs&logoColor=eeeeff&labelColor=0f0f1a)
 ![React Native](https://img.shields.io/badge/React_Native-61DAFB?style=flat-square&logo=react&logoColor=61DAFB&labelColor=0f0f1a)
 ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=06B6D4&labelColor=0f0f1a)
-
----
-
-### `04` — Activity
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=TrBinhDev&bg_color=0f0f1a&color=a8a8c0&title_color=6366f1&line=6366f1&point=818cf8&area=true&hide_border=true&custom_title=Contribution%20Activity" />
-
-<p align="center">
-  <sub><code>ttb.dev</code> · Hanoi, Vietnam</sub>
-</p>
