@@ -54,6 +54,8 @@ Across my projects I've worked with:
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white&labelColor=0f0f1a)
 ![Redis](https://img.shields.io/badge/Redis-FF4438?style=flat-square&logo=redis&logoColor=white&labelColor=0f0f1a)
 ![Kafka](https://img.shields.io/badge/Apache_Kafka-eeeeff?style=flat-square&logo=apachekafka&logoColor=eeeeff&labelColor=0f0f1a)
+![Kafka Connect](https://img.shields.io/badge/Kafka_Connect-eeeeff?style=flat-square&logo=apachekafka&logoColor=eeeeff&labelColor=0f0f1a)
+![Debezium](https://img.shields.io/badge/Debezium-eeeeff?style=flat-square&labelColor=0f0f1a&color=eeeeff)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white&labelColor=0f0f1a)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white&labelColor=0f0f1a)
 
